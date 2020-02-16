@@ -5,7 +5,7 @@ import logging
 from datetime import datetime
 from urllib import request, parse
 
-logging.basicConfig(level=logging.DEBUG, filename='app.log', format='%(levelname)s - %(asctime)s - %(message)s')
+logging.basicConfig(level=logging.DEBUG, format='%(levelname)s - %(asctime)s - %(message)s')
 logging.debug(os.environ['GITHUB_REPOSITORY'])
 
 query = '''
