@@ -1,0 +1,47 @@
+name: Stats Update
+on:
+    schedule:
+      # * is a special character in YAML so you have to quote this string
+      - cron:  '5 0-23 1-31 1-12 0-6' #Run everyday at midnight
+jobs:
+    my-job:
+        name: My Job
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - uses: actions/setup-python@v1
+              with:
+                python-version: '3.7' # Version range or exact version of a Python version to use, using SemVer's version range syntax
+                architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
+            - name: Set environment Variable
+              env:
+                TOKEN_GITHUB_API: ${{ secrets.GITHUB_TOKEN }}
+                # TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+            - name: Run the script
+              run: python my_script.py
+            - name: Push changes to repo
+              run: |
+                REMOTE=https://${{ secrets.PAGES_TOKEN }}@github.com/${{ github.repository }}
+                git config user.email "${{ github.actor }}@users.noreply.github.com"
+                git config user.name "${{ github.actor }}"
+                git pull ${REMOTE}
+                git checkout master
+                git add .
+                git status
+                git commit -am "Updated GitHub Stats"
+                git push ${REMOTE} master
+# ┌───────────── minute (0 - 59)
+# │ ┌───────────── hour (0 - 23)
+# │ │ ┌───────────── day of the month (1 - 31)
+# │ │ │ ┌───────────── month (1 - 12 or JAN-DEC)
+# │ │ │ │ ┌───────────── day of the week (0 - 6 or SUN-SAT)
+# │ │ │ │ │
+# │ │ │ │ │
+# │ │ │ │ │
+# * * * * *
+
+What I want to do -
+Run the main.py python code in the environment with the token and everything
+Give access to the shell to access the files in the repo
+Shell executes python code and updates the index.html with the extracted data
+After updating the file it commits it.

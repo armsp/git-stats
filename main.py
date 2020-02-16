@@ -57,7 +57,7 @@ query {
 #ctx.check_hostname = False
 #ctx.verify_mode = ssl.CERT_NONE
 url = 'https://api.github.com/graphql'
-github_token = f"Bearer {os.environ['']}"
+github_token = f"Bearer {os.environ['GITHUB_TOKEN']}"
 header = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36', 'content-type': 'application/json', "Authorization": github_token}
 
 data = {'query': query}
@@ -98,10 +98,13 @@ if response.getcode() == 200:
   logging.debug(os.environ['GITHUB_SHA'])
 
   # #update values
+  # May have to use GITHUB_WORKSPACE default environment variable
   with open('template.html') as f:
     template_html = f.read()
 
   formatted_html = template_html.format(**namespace)
 
-  with open('index.html', 'w') as f:
+  with open('index.html', 'w+') as f:
     f.write(formatted_html)
+
+logging.debug("Contents updated to index.html file")
