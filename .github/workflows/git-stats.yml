@@ -13,10 +13,10 @@ jobs:
               with:
                 python-version: '3.7' # Version range or exact version of a Python version to use, using SemVer's version range syntax
                 architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
-            - name: Set environment Variable
-              env:
-                TOKEN_GITHUB_API: ${{ secrets.GITHUB_TOKEN }}
-                # TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+            # - name: Set environment Variable
+            #   env:
+            #     TOKEN_GITHUB_API: ${{ secrets.GITHUB_TOKEN }}
+            #     # TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
             - name: Run the script
               run: python my_script.py
             - name: Push changes to repo
