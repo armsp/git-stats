@@ -40,8 +40,8 @@ jobs:
 # │ │ │ │ │
 # * * * * *
 
-What I want to do -
-Run the main.py python code in the environment with the token and everything
-Give access to the shell to access the files in the repo
-Shell executes python code and updates the index.html with the extracted data
-After updating the file it commits it.
+# What I want to do -
+# Run the main.py python code in the environment with the token and everything
+# Give access to the shell to access the files in the repo
+# Shell executes python code and updates the index.html with the extracted data
+# After updating the file it commits it.
