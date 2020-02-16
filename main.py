@@ -57,7 +57,7 @@ query {
 #ctx.check_hostname = False
 #ctx.verify_mode = ssl.CERT_NONE
 url = 'https://api.github.com/graphql'
-github_token = f"Bearer {os.environ['GITHUB_TOKEN']}"
+github_token = f"Bearer {os.environ['TOKEN_GITHUB_API']}"
 header = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36', 'content-type': 'application/json', "Authorization": github_token}
 
 data = {'query': query}
