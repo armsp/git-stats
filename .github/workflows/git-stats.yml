@@ -21,7 +21,7 @@ jobs:
             #     TOKEN_GITHUB_API: ${{ secrets.GITHUB_TOKEN }}
             #     # TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
             - name: Run the script
-              run: python my_script.py
+              run: python main.py
             - name: Push changes to repo
               run: |
                 REMOTE=https://${{ secrets.PAGES_TOKEN }}@github.com/${{ github.repository }}
