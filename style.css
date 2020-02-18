@@ -23,10 +23,10 @@ img {
         align-items: center; */
     place-self: center;
     transform: translateY(50%);
-    position: fixed;
+    /* position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); */
     overflow: hidden;
 }
 
