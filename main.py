@@ -99,7 +99,7 @@ if response.getcode() == 200:
 
   # #update values
   # May have to use GITHUB_WORKSPACE default environment variable
-  with open('template.html') as f:
+  with open('template_v2.html') as f:
     template_html = f.read()
 
   formatted_html = template_html.format(**namespace)
